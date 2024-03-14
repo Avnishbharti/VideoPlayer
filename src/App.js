@@ -1,10 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import VideoPlayer from "./VideoPlayer/VideoPlayer";
+
 
 function App() {
   return (
     <div className="App">
-     <h1>Hello my name </h1>
+      <VideoPlayer />
     </div>
   );
 }
