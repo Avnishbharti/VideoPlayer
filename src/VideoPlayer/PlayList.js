@@ -1,6 +1,5 @@
 import { Icon } from "@iconify/react";
 import React, { useRef } from "react";
-import { List } from "react-virtualized";
 
 const PlayList = (props) => {
   const {
@@ -9,7 +8,6 @@ const PlayList = (props) => {
     currentVideoData,
     setData,
     togglePlayPause,
-    isPlayPause,
   } = props;
   const containerRef = useRef();
   const dragItem = useRef(null);
@@ -21,7 +19,7 @@ const PlayList = (props) => {
     const draggedItemContent = tempData.splice(dragItem.current, 1)[0];
     tempData.splice(dragOverItem.current, 0, draggedItemContent);
     console.log("draggedDtaata", dragItem.current, dragOverItem.current);
-    if (currentVideoData?.index == dragItem.current) {
+    if (currentVideoData?.index === dragItem.current) {
       setCurrentVideoData((prev) => ({ ...prev, index: dragOverItem.current }));
     }
     dragItem.current = null;
@@ -40,7 +38,7 @@ const PlayList = (props) => {
             className="flex justify-between items-center px-4 py-6 cursor-pointer rounded-md shadow-card hover:bg-gray-300 "
             key={idx}
             style={{
-              background: currentVideoData?.index == idx ? "#ccffff" : null,
+              background: currentVideoData?.index === idx ? "#ccffff" : null,
             }}
             onClick={() => {
               setCurrentVideoData({ index: idx, info: item });
@@ -58,10 +56,12 @@ const PlayList = (props) => {
             onDragOver={(e) => e.preventDefault()}
           >
             <div className="flex items-center gap-3">
+              <h2 className="text-black-400 text-lg">{idx + 1}</h2>
               <img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzvqzfNJ2P74SYkL42GG7D3Hfxrl5fEX8xH-SkWgiJag&s"
                 height={20}
                 width={20}
+                alt="videos"
               />
               <div>
                 <h2 className="text-black-400 text-lg">{item?.title}</h2>

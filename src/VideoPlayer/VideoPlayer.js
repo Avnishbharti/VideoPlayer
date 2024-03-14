@@ -10,7 +10,6 @@ const VideoPlayer = () => {
     index: 0,
     info: videosData[0],
   });
-  const [isPlayPause, setIsPlayPause] = useState(false);
   useEffect(() => {
     setVideoData(videosData);
   }, []);
@@ -19,10 +18,8 @@ const VideoPlayer = () => {
     const video = videoRef.current;
     if (video.paused) {
       video.play();
-      setIsPlayPause(true);
     } else {
       video.pause();
-      setIsPlayPause(false);
     }
   };
 
@@ -115,7 +112,6 @@ const VideoPlayer = () => {
             setCurrentVideoData={setCurrentVideoData}
             currentVideoData={currentVideoData}
             togglePlayPause={togglePlayPause}
-            isPlayPause={isPlayPause}
           />
         </div>
       </div>
